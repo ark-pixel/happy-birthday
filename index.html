@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday Baby 🎂</title>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      height: 100vh;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      flex-direction: column;
+
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb);
+
+      overflow: hidden;
+
+    }
+
+
+    h1 {
+
+      font-size: 3rem;
+
+      color: white;
+
+      text-shadow: 2px 2px 5px #ff6f61;
+
+      margin-bottom: 10px;
+
+      animation: bounce 1.5s infinite;
+
+    }
+
+
+    p {
+
+      font-size: 1.5rem;
+
+      color: #fff;
+
+      text-shadow: 1px 1px 4px #ff4081;
+
+    }
+
+
+    .balloon {
+
+      position: absolute;
+
+      bottom: -150px;
+
+      width: 60px;
+
+      height: 80px;
+
+      background: radial-gradient(circle at 30% 30%, #ff6f61, #ff4081);
+
+      border-radius: 50% 50% 50% 50%;
+
+      animation: floatUp 8s infinite ease-in;
+
+    }
+
+
+    .balloon::after {
+
+      content: "";
+
+      position: absolute;
+
+      bottom: -20px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 2px;
+
+      height: 40px;
+
+      background: #333;
+
+    }
+
+
+    @keyframes floatUp {
+
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+
+      100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+
+    }
+
+
+    @keyframes bounce {
+
+      0%, 100% { transform: translateY(0); }
+
+      50% { transform: translateY(-15px); }
+
+    }
+
+
+.birthday-img {
+
+  Width: auto;        /* Adjust size */
+
+  height: 350px;
+
+  border-radius: 15px; /* Rounded corners */
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+  margin: 20px 0;
+
+  animation: floatImg 3s ease-in-out infinite;
+
+}
+
+
+@keyframes floatImg {
+
+  0%, 100% { transform: translateY(0); }
+
+  50% { transform: translateY(-10px); }
+
+}
+
+
+    /* Confetti */
+
+    .confetti {
+
+      position: absolute;
+
+      width: 10px;
+
+      height: 10px;
+
+      background-color: red;
+
+      top: -10px;
+
+      animation: fall linear forwards;
+
+    }
+
+
+    @keyframes fall {
+
+      to {
+
+        transform: translateY(100vh) rotate(360deg);
+
+        opacity: 0;
+
+      }
+
+    }
+
+
+    /* Music control button */
+
+    .music-btn {
+
+      position: fixed;
+
+      bottom: 20px;
+
+      right: 20px;
+
+      padding: 10px 15px;
+
+      border: none;
+
+      border-radius: 20px;
+
+      background: #ff6f61;
+
+      color: white;
+
+      font-size: 1rem;
+
+      cursor: pointer;
+
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+
+    }
+
+    .music-btn:hover {
+
+      background: #e84393;
+
+    }
+
+
+    .credit {
+
+      position: fixed;
+
+      bottom: 5px;
+
+      left: 10px;
+
+      font-size: 0.8rem;
+
+      color: white;
+
+      opacity: 0.7;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>🎉 Happy Birthday! Baby 😍🎂</h1>
+
+  <p>Wishing you joy, love, and endless happiness today 💖</p>
+
+<img src="T27.jpg" alt="Birthday Cake" class="birthday-img">
+
+ <p>I love you a lot my Baby😘</p>
+
+
+
+  <!-- Balloons -->
+
+  <div class="balloon" style="left:10%; animation-delay:0s;"></div>
+
+  <div class="balloon" style="left:30%; animation-delay:2s; background: radial-gradient(circle at 30% 30%, #6a5acd, #483d8b);"></div>
+
+  <div class="balloon" style="left:50%; animation-delay:4s; background: radial-gradient(circle at 30% 30%, #00b894, #019875);"></div>
+
+  <div class="balloon" style="left:70%; animation-delay:1s; background: radial-gradient(circle at 30% 30%, #ffda79, #f39c12);"></div>
+
+  <div class="balloon" style="left:90%; animation-delay:3s; background: radial-gradient(circle at 30% 30%, #e84393, #c0392b);"></div>
+
+
+  <!-- Birthday Song -->
+
+  <audio id="bg-music" loop>
+
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_4d0b4c2f6f.mp3?filename=happy-birthday-357371.mp3" type="audio/mp3">
+
+  </audio>
+
+
+  <button class="music-btn" onclick="toggleMusic()">🔊 Pause Music</button>
+
+
+  <div class="credit">🎵 Music: <a href="https://pixabay.com/music/special-occasions-happy-birthday-357371/" target="_blank" style="color:white;">Pixabay</a></div>
+
+
+  <script>
+
+    // Confetti generator
+
+    function createConfetti() {
+
+      const confetti = document.createElement("div");
+
+      confetti.classList.add("confetti");
+
+      document.body.appendChild(confetti);
+
+
+      // random position
+
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+
+
+      // random color
+
+      const colors = ["#ff6f61", "#ffda79", "#6a5acd", "#00b894", "#e84393", "#f39c12"];
+
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+
+      // random size
+
+      const size = Math.random() * 8 + 5;
+
+      confetti.style.width = size + "px";
+
+      confetti.style.height = size + "px";
+
+
+      // random duration
+
+      const duration = Math.random() * 3 + 2;
+
+      confetti.style.animationDuration = duration + "s";
+
+
+      // remove after falling
+
+      setTimeout(() => {
+
+        confetti.remove();
+
+      }, duration * 1000);
+
+    }
+
+
+    // keep dropping confetti
+
+    setInterval(createConfetti, 100);
+
+
+    // Music toggle
+
+    const music = document.getElementById("bg-music");
+
+    const btn = document.querySelector(".music-btn");
+
+    function toggleMusic() {
+
+      if (music.paused) {
+
+        music.play();
+
+        btn.textContent = "🔊 Pause Music";
+
+      } else {
+
+        music.pause();
+
+        btn.textContent = "▶️ Play Music";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
